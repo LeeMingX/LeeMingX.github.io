@@ -7,19 +7,14 @@
   <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8">
 <meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88">
   
-    <title>new-with-html | Mouse Blog</title>
+    <title>nodejs-server | Mouse Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Xuan Lee">
     
-    <meta name="description" content="入门HTTP历史：email、邮件讨论组、FTP地址下载资源、HTTP和Gopher、HTML只是超级文本之一
-WWW的发明
-URI：统一资源标识符
-HTTP
-HTML：页面跳转
-
-URN-统一资源名称：唯一实体对应的名称URL-统一资源定位符：唯一确定网页位置，不确定位置
-.com 等：顶级域名b">
+    <meta name="description" content="NodeJS Server网络与常用IPTCP-传输控制协议（transmission control protocol）IP协议-如何连接的含义
+TCP和UDP协议的区别TCP可靠，面向连接，相对UDP较慢UDP不可靠，不面向链接，相对TCP较快
+三次握手：客户端：我要连接了服务端：准备好了，可以">
     
     
     
@@ -81,15 +76,15 @@ URN-统一资源名称：唯一实体对应的名称URL-统一资源定位符：
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2019/03/05/new-with-html/" title="new-with-html" itemprop="url">new-with-html</a>
+      <a href="/2019/03/06/nodejs-server/" title="nodejs-server" itemprop="url">nodejs-server</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="Xuan Lee">Xuan Lee</a>
     </p>
   <p class="article-time">
-    <time datetime="2019-03-05T14:41:42.000Z" itemprop="datePublished">2019-03-05</time>
-    Updated:<time datetime="2019-03-05T15:49:49.012Z" itemprop="dateModified">2019-03-05</time>
+    <time datetime="2019-03-06T12:07:01.000Z" itemprop="datePublished">2019-03-06</time>
+    Updated:<time datetime="2019-03-07T08:03:46.632Z" itemprop="dateModified">2019-03-07</time>
     
   </p>
 </header>
@@ -98,59 +93,20 @@ URN-统一资源名称：唯一实体对应的名称URL-统一资源定位符：
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#入门HTTP"><span class="toc-number">1.</span> <span class="toc-text">入门HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WWW的发明"><span class="toc-number">1.1.</span> <span class="toc-text">WWW的发明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-number">1.2.</span> <span class="toc-text">HTTP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#请求的格式"><span class="toc-number">2.</span> <span class="toc-text">请求的格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#响应的格式"><span class="toc-number">3.</span> <span class="toc-text">响应的格式</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJS-Server"><span class="toc-number">1.</span> <span class="toc-text">NodeJS Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络与常用IP"><span class="toc-number">1.1.</span> <span class="toc-text">网络与常用IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个最简单的Node-js-Server"><span class="toc-number">1.2.</span> <span class="toc-text">一个最简单的Node.js Server</span></a></li></ol></li></ol>
 		</div>
 		
-		<h1 id="入门HTTP"><a href="#入门HTTP" class="headerlink" title="入门HTTP"></a>入门HTTP</h1><p>历史：email、邮件讨论组、FTP地址下载资源、HTTP和Gopher、HTML只是超级文本之一</p>
-<h2 id="WWW的发明"><a href="#WWW的发明" class="headerlink" title="WWW的发明"></a>WWW的发明</h2><ol>
-<li>URI：统一资源标识符</li>
-<li>HTTP</li>
-<li>HTML：页面跳转</li>
-</ol>
-<p>URN-统一资源名称：唯一实体对应的名称<br>URL-统一资源定位符：唯一确定网页位置，不确定位置</p>
-<p>.com 等：顶级域名<br>baidu 等：二级域名<br>www 等：三级域名</p>
-<p>锚点：标记文章内跳转的位置</p>
-<p>DNS:域名系统  域名 -&gt; ip</p>
+		<h1 id="NodeJS-Server"><a href="#NodeJS-Server" class="headerlink" title="NodeJS Server"></a>NodeJS Server</h1><h2 id="网络与常用IP"><a href="#网络与常用IP" class="headerlink" title="网络与常用IP"></a>网络与常用IP</h2><p>TCP-传输控制协议（transmission control protocol）<br>IP协议-如何连接的含义</p>
+<p>TCP和UDP协议的区别<br>TCP可靠，面向连接，相对UDP较慢<br>UDP不可靠，不面向链接，相对TCP较快</p>
+<p>三次握手：<br>客户端：我要连接了<br>服务端：准备好了，可以连了<br>客户端：我连接到你了</p>
+<p>端口：使用TCP或UDP协议访问一个设备，需要指定端口号(port)</p>
 <ul>
-<li>nslookup</li>
-<li>ping</li>
+<li>http服务：80端口</li>
+<li>https服务：443端口</li>
+<li>ftp服务：21端口</li>
 </ul>
-<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>Server: 服务器电脑运行的软件<br>Client: 电脑运行的浏览器</p>
-<p>TCP/IP协议，0～2048端口指定服务</p>
-<p>21 FTP 443 https 1080 代理服务器 3306 mysql 80 http</p>
-<p>HTTP指导客户端和服务器沟通</p>
-<p><code>curl -s -v -H &quot;&quot; -- &quot;www.baidu.com&quot;</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &gt; 为请求内容， &lt; 为相应内容</span></span><br><span class="line">&gt; GET / HTTP/1.1</span><br><span class="line">&gt; Host: www.baidu.com</span><br><span class="line">&gt; User-Agent: curl/7.54.0</span><br><span class="line">&gt; Accept: */*</span><br><span class="line">&gt; Lee: xxx</span><br><span class="line">&gt;</span><br><span class="line">&lt; HTTP/1.1 200 OK</span><br><span class="line">&lt; Accept-Ranges: bytes</span><br><span class="line">&lt; Cache-Control: private, no-cache, no-store, proxy-revalidate, no-transform</span><br><span class="line">&lt; Connection: Keep-Alive</span><br><span class="line">&lt; Content-Length: 2381</span><br><span class="line">&lt; Content-Type: text/html</span><br><span class="line">&lt; Date: Tue, 05 Mar 2019 15:16:02 GMT</span><br><span class="line">&lt; Etag: <span class="string">"588604fc-94d"</span></span><br><span class="line">&lt; Last-Modified: Mon, 23 Jan 2017 13:28:28 GMT</span><br><span class="line">&lt; Pragma: no-cache</span><br><span class="line">&lt; Server: bfe/1.0.8.18</span><br></pre></td></tr></table></figure>
-<p><code>curl -X post -s -v -H &quot;&quot; -- &quot;www.baidu.com&quot;</code></p>
-<p><code>curl -X post -d &quot;hello&quot; -s -v -H &quot;&quot; -- &quot;www.baidu.com&quot;</code></p>
-<h1 id="请求的格式"><a href="#请求的格式" class="headerlink" title="请求的格式"></a>请求的格式</h1><ol>
-<li>动词 路径 协议/版本</li>
-<li>key : value</li>
-<li>回车 -&gt; 区分第二部分和第四部分</li>
-<li>数据</li>
-</ol>
-<p>GET：获取<br>POST：上传<br>PUT、PATCH：整体更新、部分更新<br>DELETE：删除<br>HEAD、OPTIONS</p>
-<p>路径包含查询操作，不包括锚点</p>
-<p>content-type标明数据格式<br>最常见的格式<code>application/x-www-form-urlencoded</code></p>
-<p>x-表示还没有写入规范，使用url编码</p>
-<h1 id="响应的格式"><a href="#响应的格式" class="headerlink" title="响应的格式"></a>响应的格式</h1><ol>
-<li>协议/版本</li>
-<li>key : value（Content-Length,Content-Type）</li>
-<li>回车</li>
-<li>返回数据</li>
-</ol>
-<p>状态码：服务器对浏览器说的话</p>
-<ul>
-<li>1xx 不常用</li>
-<li>2xx 200(get) 204(post)</li>
-<li>3xx 滚 301(永久不存在) 302(暂时不存在) 304(和上次返回相同)</li>
-<li>4xx 请求端出错 404</li>
-<li>5xx 服务器出错 502 500</li>
-</ul>
-<blockquote>
-<p>Content-Type遵循MIME规范</p>
-</blockquote>
-  
+<p>0-1023端口是留给系统使用的，管理员权限可以使用</p>
+<h2 id="一个最简单的Node-js-Server"><a href="#一个最简单的Node-js-Server" class="headerlink" title="一个最简单的Node.js Server"></a>一个最简单的Node.js Server</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">"url"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> port = process.argv[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!port) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"请输入端口号，eg node server 8888"</span>)</span><br><span class="line">    process.exit(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> parsedURL = url.parse(request.url, <span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">var</span> pathWithQuery = parsedURL.url</span><br><span class="line">    <span class="keyword">var</span> queryStr = <span class="string">""</span></span><br><span class="line">    <span class="keyword">if</span> (pathWithQuery.indexOf(<span class="string">"?"</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        queryStr = pathWithQuery.subString(pathWithQuery.indexOf(<span class="string">"?"</span>))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> path = parsedURL.path</span><br><span class="line">    <span class="keyword">var</span> query = parsedURL.query</span><br><span class="line">    <span class="keyword">var</span> method = request.method</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"带参数的请求路径："</span>, path)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"请求参数："</span>, query)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"请求类型："</span>, method)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(port)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"服务器已启动，正在监听："</span>, port)</span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 
@@ -159,7 +115,7 @@ URN-统一资源名称：唯一实体对应的名称URL-统一资源定位符：
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2019/03/05/new-with-html/" data-title="new-with-html | Mouse Blog" data-tsina class="share clearfix">
+  <div data-url="http://yoursite.com/2019/03/06/nodejs-server/" data-title="nodejs-server | Mouse Blog" data-tsina class="share clearfix">
   </div>
 
 </div>
@@ -168,19 +124,11 @@ URN-统一资源名称：唯一实体对应的名称URL-统一资源定位符：
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
- <a href="/2019/03/06/nodejs-server/" title="nodejs-server">
-  <strong>PREVIOUS:</strong><br>
-  <span>
-  nodejs-server</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2019/03/05/demo-sh/" title="demo.sh">
+<a href="/2019/03/05/new-with-html/" title="new-with-html">
  <strong>NEXT:</strong><br> 
- <span>demo.sh
+ <span>new-with-html
 </span>
 </a>
 </div>
@@ -190,7 +138,7 @@ URN-统一资源名称：唯一实体对应的名称URL-统一资源定位符：
 	
 <section class="comment">
 	
-	<div class="ds-thread" data-title="new-with-html" data-thread-key="new-with-html" data-author-key="Xuan Lee" data-url="http://yoursite.com/post/new-with-html"></div>
+	<div class="ds-thread" data-title="nodejs-server" data-thread-key="nodejs-server" data-author-key="Xuan Lee" data-url="http://yoursite.com/post/nodejs-server"></div>
 	
 </section>
 
@@ -200,7 +148,7 @@ URN-统一资源名称：唯一实体对应的名称URL-统一资源定位符：
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#入门HTTP"><span class="toc-number">1.</span> <span class="toc-text">入门HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WWW的发明"><span class="toc-number">1.1.</span> <span class="toc-text">WWW的发明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-number">1.2.</span> <span class="toc-text">HTTP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#请求的格式"><span class="toc-number">2.</span> <span class="toc-text">请求的格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#响应的格式"><span class="toc-number">3.</span> <span class="toc-text">响应的格式</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJS-Server"><span class="toc-number">1.</span> <span class="toc-text">NodeJS Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络与常用IP"><span class="toc-number">1.1.</span> <span class="toc-text">网络与常用IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个最简单的Node-js-Server"><span class="toc-number">1.2.</span> <span class="toc-text">一个最简单的Node.js Server</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
