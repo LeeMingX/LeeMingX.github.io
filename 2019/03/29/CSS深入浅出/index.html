@@ -1,0 +1,495 @@
+
+ <!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+  <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8">
+<meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88">
+  
+    <title>CSS深入浅出 | Mouse Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Xuan Lee">
+    
+    <meta name="description" content="css学习方法CSS学习难点
+在CSS之前是通过标签和属性来控制样式
+CSS的核心内容：选择器、属性、值
+html的link标签添加了css的支持，&amp;lt;link rel=&amp;#39;stylesheet&amp;#39; href=&amp;#39;xx&amp;#39;&amp;gt;
+&amp;lt;link rel=&amp;#39;st">
+    
+    
+    
+    
+    <link rel="alternate" href="atom.xml" title="Mouse Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            var _bdId ='391982416296a0d54221f59fe35250d4';
+             hm.src = "//hm.baidu.com/hm.js?" + _bdId;
+             var s = document.getElementsByTagName("script")[0]; 
+             s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+     
+</head>
+</html>
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Mouse Blog">Mouse Blog</a></h1>
+				<a class="blog-motto"></a>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+                                            <form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+                                            <label>Search</label>
+                                        <input name="s" type="hidden" value><input type="text" name="q" size="30" placeholder="Search"><br>
+					
+					</form></li>
+				</ul>
+                            </ul></nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/03/29/CSS深入浅出/" title="CSS深入浅出" itemprop="url">CSS深入浅出</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Xuan Lee">Xuan Lee</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2019-03-29T03:08:54.000Z" itemprop="datePublished">2019-03-29</time>
+    Updated:<time datetime="2019-03-30T04:34:16.300Z" itemprop="dateModified">2019-03-30</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#css学习方法"><span class="toc-number">1.</span> <span class="toc-text">css学习方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS学习难点"><span class="toc-number">1.1.</span> <span class="toc-text">CSS学习难点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS学习简易版"><span class="toc-number">1.2.</span> <span class="toc-text">CSS学习简易版</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS核心知识"><span class="toc-number">2.</span> <span class="toc-text">CSS核心知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文档流"><span class="toc-number">2.1.</span> <span class="toc-text">文档流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文字溢出处理"><span class="toc-number">2.1.1.</span> <span class="toc-text">文字溢出处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文字垂直居中"><span class="toc-number">2.1.2.</span> <span class="toc-text">文字垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#margin合并"><span class="toc-number">2.1.3.</span> <span class="toc-text">margin合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#div中既有内联元素，又有块级元素"><span class="toc-number">2.1.4.</span> <span class="toc-text">div中既有内联元素，又有块级元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#div中的div垂直居中"><span class="toc-number">2.1.5.</span> <span class="toc-text">div中的div垂直居中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆叠上下文"><span class="toc-number">2.2.</span> <span class="toc-text">堆叠上下文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是堆叠顺序"><span class="toc-number">2.2.1.</span> <span class="toc-text">什么是堆叠顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是堆叠上下文"><span class="toc-number">2.2.2.</span> <span class="toc-text">什么是堆叠上下文</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="css学习方法"><a href="#css学习方法" class="headerlink" title="css学习方法"></a>css学习方法</h1><h2 id="CSS学习难点"><a href="#CSS学习难点" class="headerlink" title="CSS学习难点"></a>CSS学习难点</h2><ol>
+<li>在CSS之前是通过标签和属性来控制样式</li>
+<li>CSS的核心内容：选择器、属性、值</li>
+<li>html的link标签添加了css的支持，<code>&lt;link rel=&#39;stylesheet&#39; href=&#39;xx&#39;&gt;</code></li>
+<li><code>&lt;link rel=&#39;stylesheet&#39; href=&#39;xx&#39; media=&#39;print&#39;&gt;</code>，最早的CSS支持媒体查询功能（向打印的媒介添加样式）</li>
+<li>设计原则：需求什么就提供什么</li>
+<li>要颜色给 color  要图文混排 float  要绝对定位 position</li>
+<li>写CSS不需要复杂的逻辑</li>
+<li>CSS不正交<ol>
+<li>各属性之间互相影响<ul>
+<li>margin合并，在两个div中间加入一个有border样式的div，margin合并会消失，display:table/flex/inline-block 样式也可以使margin合并 padding样式也可以使margin合并 overflow:hidden</li>
+<li>小圆点和display，修改display会影响列表的默认小圆点样式</li>
+<li>绝对定位之后将元素的display:inline/inline-block改为block</li>
+</ul>
+</li>
+<li>各元素之间互相影响<ul>
+<li>transform会改变position:fixed的元素</li>
+<li>float会影响inline元素</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="CSS学习简易版"><a href="#CSS学习简易版" class="headerlink" title="CSS学习简易版"></a>CSS学习简易版</h2><ol>
+<li>套路即可应付工作<ol>
+<li>水平居中</li>
+<li>垂直居中</li>
+</ol>
+</li>
+<li>巧用工具<ol>
+<li>CSS3 Generator</li>
+</ol>
+</li>
+</ol>
+<p>布局：<br>    PC：IE8（float布局，所有元素往左浮动，父元素加清除浮动），Flex布局<br>    Mobile：Flex布局<br>居中：<br>    水平居中：子元素宽度不确定（指定左右margin），子元素宽度确定（左右margin为auto），内联元素在父元素写text-align:center<br>    垂直居中：子元素高度确定（父元素指定上下padding），子元素高度不确定（父元素padding为auto），父元素高度确定（兼容IE-&gt; table div模拟table，chrome+mobile：flex布局）</p>
+<h1 id="CSS核心知识"><a href="#CSS核心知识" class="headerlink" title="CSS核心知识"></a>CSS核心知识</h1><h2 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h2><ol>
+<li>字和字之间是基线对齐的，设计师在设计字体是会给一个建议行高（字体高度的n倍），即默认行高</li>
+<li>在一个div中写一个字母（内联元素），这个div的高度由这个<code>字体大小*行高</code>来确定，和字体大小没关系</li>
+<li><code>&amp;nbsp // no break space</code> 可以在html中添加空格</li>
+</ol>
+<p>两行中文左右对齐（头部和尾部各自对齐）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">5em</span>;</span><br><span class="line">    text-align: justify; //两端对齐</span><br><span class="line">    line-height: 20px; //此时font-size为20px</span><br><span class="line">    <span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br><span class="line">    <span class="selector-tag">height</span>: 20<span class="selector-tag">px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">span</span> :: <span class="selector-tag">after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>html会把内联元素前面和后面的空格都忽略，内联元素之间的空白缩为一个空格</p>
+<p>float属性可以清楚内联元素中间的空白，父元素要加clearfix</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>内联元素在足够多的情况下页面会自动换行，文档流会从左往右移动</p>
+<p><code>word-break: break-all;</code> 可以在文字任意位置断开</p>
+<h3 id="文字溢出处理"><a href="#文字溢出处理" class="headerlink" title="文字溢出处理"></a>文字溢出处理</h3><p>多出的文本变成省略号，div中的长度不由文本长度决定</p>
+<p>多行多出的文本变成省略号，自查</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>: elipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="文字垂直居中"><a href="#文字垂直居中" class="headerlink" title="文字垂直居中"></a>文字垂直居中</h3><p>使用<code>line-height</code>和<code>padding</code>来垂直居中文字，<code>outline</code>和<code>border</code>比起来不会占用高度，尽量不写高度</p>
+<h3 id="margin合并"><a href="#margin合并" class="headerlink" title="margin合并"></a>margin合并</h3><p>如果父元素没有什么东西（border）挡住margin，那么会和子元素的margin合并，通过给父元素的<code>border-top</code>和<code>border-bottom</code>来实现，或者在父元素上设置padding，<code>overflow: hidden</code>也可以取消合并，这种情况子元素的所有内容都不能超过父元素，尽量不使用这种方法</p>
+<h3 id="div中既有内联元素，又有块级元素"><a href="#div中既有内联元素，又有块级元素" class="headerlink" title="div中既有内联元素，又有块级元素"></a>div中既有内联元素，又有块级元素</h3><p>div的高度由内部文档流中元素高度的总和决定的。文档流中的内联元素会从左往右排列，碰到边界会换行，块级元素从上到下</p>
+<p><code>float</code>会使元素脱离文档流，<code>position:absolute/fix</code>也可以将元素脱离文档流，<code>position:relative;</code>元素不会脱离文档流，只是参照它原来的位置来定位</p>
+<h3 id="div中的div垂直居中"><a href="#div中的div垂直居中" class="headerlink" title="div中的div垂直居中"></a>div中的div垂直居中</h3><p>外部的div高度确定</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dad</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>外部的div高度不确定</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dad</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">padding-top: 100%; //实现1:1div</span><br></pre></td></tr></table></figure>
+<h2 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h2><h3 id="什么是堆叠顺序"><a href="#什么是堆叠顺序" class="headerlink" title="什么是堆叠顺序"></a>什么是堆叠顺序</h3><p>div在屏幕的垂直方向是有层次关系的，这个关系就是堆叠上下文</p>
+<p>一个div内，border在background上方，其中的文字/内联元素在border上方，子div是盖不住内联元素的，子div中的文字在父div的文字之上（一般原则，同一类元素，在后面出现的元素会盖住之前的元素）</p>
+<p>浮动元素比子div（块级元素）高，浮动元素中的文字没有外部的文字高</p>
+<p>相对定位的元素，<code>position:relative</code>修饰的元素是最高的，通过改变<code>z-index</code>来调整元素垂直方向的高度，<code>z-index</code>为正数会变高，如果为负数，且background没有定位的情况下，该元素会在background之下</p>
+<blockquote>
+<p>测试堆叠顺序的方法是通过颜色和位置来回测试</p>
+</blockquote>
+<h3 id="什么是堆叠上下文"><a href="#什么是堆叠上下文" class="headerlink" title="什么是堆叠上下文"></a>什么是堆叠上下文</h3><p>如果父div也有绝对定位，那么子div的负z-index会使子div移动到border之上</p>
+<p>堆叠上下文只是一个概念，有一系列描述它的特征，当一个元素满足以下条件是会进入堆叠上下文的状态，否则是默认的展示行为</p>
+<ol>
+<li>根元素（HTML）</li>
+<li>z-index不为<code>auto</code>的绝对/相对定位</li>
+<li>一个z-index不为<code>auto</code>的flex元素（item），父元素为<code>display:flex|inline-flex</code></li>
+<li>opacity属性值小于1的元素</li>
+<li>transform属性值不为none的元素</li>
+<li>mix-blend-mode属性值不为<code>normal</code>的元素</li>
+<li>filter值不为<code>none</code>的元素</li>
+<li>perspective不为<code>none</code>的元素</li>
+<li>isolation的属性被设置为<code>isolate</code>的元素</li>
+<li><code>position:fixed</code></li>
+<li>在will-change中指定了任意CSS属性，即使你没有直接指定这些属性的值</li>
+<li><code>-webkit-overflow:scrolling</code>属性设置<code>touch</code>的元素</li>
+</ol>
+<p>一个堆叠上下文比另一个高，那么这个堆叠上下文中的所有元素都会比另一个高</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2019/03/29/CSS深入浅出/" data-title="CSS深入浅出 | Mouse Blog" data-tsina class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev">
+ <a href="/2019/03/31/JS数组/" title="JS数组">
+  <strong>PREVIOUS:</strong><br>
+  <span>
+  JS数组</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/03/27/JS里的对象/" title="JS里的对象">
+ <strong>NEXT:</strong><br> 
+ <span>JS里的对象
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	
+	<div class="ds-thread" data-title="CSS深入浅出" data-thread-key="CSS深入浅出" data-author-key="Xuan Lee" data-url="http://yoursite.com/post/CSS深入浅出"></div>
+	
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#css学习方法"><span class="toc-number">1.</span> <span class="toc-text">css学习方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS学习难点"><span class="toc-number">1.1.</span> <span class="toc-text">CSS学习难点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS学习简易版"><span class="toc-number">1.2.</span> <span class="toc-text">CSS学习简易版</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS核心知识"><span class="toc-number">2.</span> <span class="toc-text">CSS核心知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文档流"><span class="toc-number">2.1.</span> <span class="toc-text">文档流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文字溢出处理"><span class="toc-number">2.1.1.</span> <span class="toc-text">文字溢出处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文字垂直居中"><span class="toc-number">2.1.2.</span> <span class="toc-text">文字垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#margin合并"><span class="toc-number">2.1.3.</span> <span class="toc-text">margin合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#div中既有内联元素，又有块级元素"><span class="toc-number">2.1.4.</span> <span class="toc-text">div中既有内联元素，又有块级元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#div中的div垂直居中"><span class="toc-number">2.1.5.</span> <span class="toc-text">div中的div垂直居中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆叠上下文"><span class="toc-number">2.2.</span> <span class="toc-text">堆叠上下文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是堆叠顺序"><span class="toc-number">2.2.1.</span> <span class="toc-text">什么是堆叠顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是堆叠上下文"><span class="toc-number">2.2.2.</span> <span class="toc-text">什么是堆叠上下文</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+<div id="authorInfo">
+	
+		<div class="author-logo"></div>		
+	
+	<div class="social-list">
+		
+		
+		
+		
+		
+	</div>
+</div>
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+      <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
+      <li><a href="http://gengbiao.me" target="_blank" title="coney">coney's Blog</a></li>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer">
+    
+            <p class="copyright"> © 2019 
+		
+		<a href="http://yoursite.com" target="_blank" title="Xuan Lee">Xuan Lee</a>
+		
+            && Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> && Theme by <a href="http://gengbiao.me" target="_blank" title="coney">coney</a>
+            </p></div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:""};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+<script>
+    
+        var _bdImg = '4';
+    
+    window._bd_share_config={
+        "common":{
+            "bdSnsKey":{
+
+            },
+            "bdText":"",
+            "bdMini":"2",
+            "bdMiniList":[
+                "qzone",
+                "tsina",
+                "weixin",
+                "renren",
+                "tqq",
+                "tieba",
+                "douban",
+                "sqq",
+                "diandian",
+                "huaban",
+                "youdao",
+                "mail",
+                "ty",
+                "fbook",
+                "twi",
+                "linkedin",
+                "copy",
+                "print"
+            ],
+            "bdPic":"",
+            "bdStyle":"0",
+            "bdSize":"16"
+        },
+        "slide":{
+            "type":"slide",
+            "bdImg":_bdImg,
+            "bdPos":"right",
+            "bdTop":"350"
+        },
+        "image":{
+            "viewList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ],
+            "viewText":"分享：",
+            "viewSize":"16"
+        },
+        "selectShare":{
+            "bdContainerClass":null,
+            "bdSelectMiniList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ]
+        }
+    };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', '', '');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
+
