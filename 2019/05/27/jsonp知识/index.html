@@ -1,0 +1,472 @@
+
+ <!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+  <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8">
+<meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88">
+  
+    <title>jsonp知识 | Mouse Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Xuan Lee">
+    
+    <meta name="description" content="JSONP知识前置知识
+同源政策：A网页设置的Cookie，B网页不能打开，除非这两个网页同源
+
+
+
+协议相同
+
+域名相同
+
+端口相同
+
+
+
+如果非同源，共有三种行为受限
+1）Cookie、LocalStorage和IndexDB无法读取
+2）DOM无法获取
+3）AJAX请求不能发送
+规避上面限制的">
+    
+    
+    
+    
+    <link rel="alternate" href="atom.xml" title="Mouse Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            var _bdId ='391982416296a0d54221f59fe35250d4';
+             hm.src = "//hm.baidu.com/hm.js?" + _bdId;
+             var s = document.getElementsByTagName("script")[0]; 
+             s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+     
+</head>
+</html>
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Mouse Blog">Mouse Blog</a></h1>
+				<a class="blog-motto"></a>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+                                            <form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+                                            <label>Search</label>
+                                        <input name="s" type="hidden" value><input type="text" name="q" size="30" placeholder="Search"><br>
+					
+					</form></li>
+				</ul>
+                            </ul></nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/05/27/jsonp知识/" title="jsonp知识" itemprop="url">jsonp知识</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Xuan Lee">Xuan Lee</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2019-05-27T07:18:58.000Z" itemprop="datePublished">2019-05-27</time>
+    Updated:<time datetime="2019-05-27T09:15:13.537Z" itemprop="dateModified">2019-05-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JSONP知识"><span class="toc-number">1.</span> <span class="toc-text">JSONP知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前置知识"><span class="toc-number">1.1.</span> <span class="toc-text">前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#规避上面限制的方法"><span class="toc-number">1.1.1.</span> <span class="toc-text">规避上面限制的方法</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="JSONP知识"><a href="#JSONP知识" class="headerlink" title="JSONP知识"></a>JSONP知识</h1><h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><blockquote>
+<p>同源政策：A网页设置的Cookie，B网页不能打开，除非这两个网页同源</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><p>协议相同</p>
+</li>
+<li><p>域名相同</p>
+</li>
+<li><p>端口相同</p>
+</li>
+</ul>
+</blockquote>
+<p>如果非同源，共有三种行为受限</p>
+<p>1）Cookie、LocalStorage和IndexDB无法读取</p>
+<p>2）DOM无法获取</p>
+<p>3）AJAX请求不能发送</p>
+<h3 id="规避上面限制的方法"><a href="#规避上面限制的方法" class="headerlink" title="规避上面限制的方法"></a>规避上面限制的方法</h3><ol>
+<li>Cookie</li>
+</ol>
+<p>浏览器允许通过设置<code>document.domain</code>共享Cookie，设置相同的一级域名之后，两个网页可以共享Cookie</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.domain = <span class="string">'example.com'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// A网页</span></span><br><span class="line"><span class="built_in">document</span>.cookie = <span class="string">"test1=hello"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// B网页</span></span><br><span class="line"><span class="keyword">var</span> allCookie = <span class="built_in">document</span>.cookie</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这种方法只适用于Cookie和iframe窗口，LocalStorage和IndexDB无法通过这种方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务器也可以在设置Cookie的时候，指定Cookie所属域名为一级域名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Set-Cookie: key=value; domain=.example.com; path=/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这样二级域名和三级域名不用做任何设置，都可以读取这个Cookie</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>iframe</li>
+</ol>
+<p>iframe窗口和<code>window.open</code>方法打开的窗口与父窗口无法通信</p>
+<p>如果两个窗口的一级域名相同，只是二级域名不同，可以使用上面那种方法拿到DOM</p>
+<p>对于完全不同源的网站有三种方法</p>
+<pre><code>1. 片段识别符 (fragment identifier)
+2. window.name
+3. 跨文档通信API (Cross-document messaging)
+</code></pre><p>片段识别符指的是URL的<code>#</code>号后面的部分，只改变片段识别符，页面不会重新刷新</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> src = originURL + <span class="string">'#'</span> + data;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'myIFrame'</span>).src = src</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子窗口监听 hashchange 事件得到通知</span></span><br><span class="line"><span class="built_in">window</span>.onhashchange = checkMessage;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkMessage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message = <span class="built_in">window</span>.localtion.hash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>window.name</code>属性，无论是否同源，只要在同一个窗口内，前一个网页设置了这个属性，后一个网页可以读取它</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子窗口，载入一个不同源的网页，该网页将信息写入window.name属性</span></span><br><span class="line"><span class="built_in">window</span>.name = data;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子窗口跳回一个与主窗口同域的网址</span></span><br><span class="line">location = <span class="string">'http://parent.url.com/xxx.html'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 主窗口就可以读取子窗口的window.name</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="built_in">document</span>.getElementById(<span class="string">'myFrame'</span>).contentWindow.name;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 优点是window.name的容量很大，可以放置很长的字符串，缺点是必须监听子窗口window.name属性的变化，影响网页性能</span></span><br></pre></td></tr></table></figure>
+<p><code>window.postMessage</code>为<code>window</code>对象新增一个window.postMessage方法，允许跨窗口通信，无论这两个窗口是否同源</p>
+<p>父窗口<code>http://aaa.com</code>向子窗口<code>http://bbb.com</code>发消息，调用<code>postMessage</code>方法就好了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> popup = <span class="built_in">window</span>.open(<span class="string">'http://bbb.com'</span>, <span class="string">'title'</span>)</span><br><span class="line">popup.postMessage(<span class="string">'hello world'</span>, <span class="string">'http://bbb.com'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// postMessage的第一个参数是具体的信息内容，第二个参数是接收消息的窗口的源，也可以设置为*，向所有窗口发送</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 子窗口向父窗口发送消息写法类似</span></span><br><span class="line"><span class="built_in">window</span>.opener.postMessage(<span class="string">'Nice to meet you'</span>, <span class="string">'http://aaa.com'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 父窗口和子窗口都可以通过message事件监听对方的消息</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// message事件的事件对象e，提供以下三个属性</span></span><br><span class="line"><span class="comment">// e.source 发送消息的窗口</span></span><br><span class="line"><span class="comment">// e.origin 消息发向的地址</span></span><br><span class="line"><span class="comment">// e.data 消息内容</span></span><br></pre></td></tr></table></figure>
+<p>通过<code>window.postMessage</code>，读写其它窗口的LocalStorage也成为了可能</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子窗口将父窗口发来的信息写入自己的LocalStorage</span></span><br><span class="line"><span class="built_in">window</span>.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (e.origin !== <span class="string">'http://bbb.com'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> payload = <span class="built_in">JSON</span>.parse(e.data)</span><br><span class="line">    localStorage.setItem(payload.key, <span class="built_in">JSON</span>.stringify(payload.data))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 父窗口发送的信息</span></span><br><span class="line"><span class="keyword">var</span> win = <span class="built_in">document</span>.getElementByTagName(<span class="string">'iframe'</span>)[<span class="number">0</span>].contentWindow</span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>: <span class="string">'Jack'</span>&#125;</span><br><span class="line">win.postMessage(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">key</span>: <span class="string">'storage'</span>, <span class="attr">data</span>: obj&#125;), <span class="string">'http://bbb.com'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加强版子窗口接收信息</span></span><br><span class="line"><span class="built_in">window</span>.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (e.origin !== <span class="string">'http://bbb.com'</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">var</span> payload = <span class="built_in">JSON</span>.parse(e.data)</span><br><span class="line">    <span class="keyword">switch</span> (payload.method) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'set'</span>:</span><br><span class="line">            localStorage.setItem(payload.key, <span class="built_in">JSON</span>.stringify(payload.data))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">'get'</span>:</span><br><span class="line">            <span class="keyword">var</span> parent = <span class="built_in">window</span>.parent</span><br><span class="line">            <span class="keyword">var</span> data = localStorage.getItem(payload.key);</span><br><span class="line">            parent.postMessage(data, <span class="string">'http://aaa.com'</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">'remove'</span>:</span><br><span class="line">            localStorage.removeItem(payload.key)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加强版父窗口发送信息</span></span><br><span class="line"><span class="keyword">var</span> win = <span class="built_in">document</span>.getElementByTagName(<span class="string">'iframe'</span>)[<span class="number">0</span>].contentWindow</span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>: <span class="string">'Jack'</span>&#125;</span><br><span class="line">win.postMessage(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">key</span>: <span class="string">'storage'</span>, <span class="attr">method</span>: <span class="string">'set'</span>, data&#125;))</span><br><span class="line">win.postMessage(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">key</span>: <span class="string">'storage'</span>, <span class="attr">method</span>: <span class="string">'get'</span>&#125;))</span><br><span class="line"><span class="built_in">window</span>.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (e.origin !== <span class="string">'http://aaa.com'</span>) <span class="keyword">return</span></span><br><span class="line">    <span class="comment">// Jack</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(e.data).name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>AJAX</li>
+</ol>
+<p>同源政策规定，AJAX请求只能发给同源的网址</p>
+<p>除了通过服务器代理（浏览器发送同源服务器，再由后者请求外部服务），有三种方法规避这个限制</p>
+<pre><code>* JSONP
+* WebSocket
+* CORS
+</code></pre><p>JSONP是服务器与客户端跨源通信的常用方法，最大特点是简单适用，老式浏览器全部支持</p>
+<p>基本思想：网页通过添加一个<code>&lt;script&gt;</code>元素，向服务器请求JSON数据，这种做法不受同源政策限制，服务器收到请求后，将数据放在一个指定名字的回调函数里</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 网页动态插入&lt;script&gt;元素，由它向跨源网址发出请求</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addScriptTag</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>)</span><br><span class="line">    script.setAttribute(<span class="string">'type'</span>, <span class="string">'text/javascript'</span>)</span><br><span class="line">    script.src = src</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    addScriptTag(<span class="string">"http://example.com/ip?callback=foo"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data.ip)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务器接收到请求后，将数据放在foo中</span></span><br><span class="line">foo(&#123;<span class="string">"ip"</span>: <span class="string">"xx"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>&lt;script&gt;</code>元素请求的脚本直接作为代码运行，只要浏览器定义了<code>foo</code>函数，该函数就会立即调用</p>
+<p>WebSocket是一种通信协议，使用<code>ws://</code>(非加密)和<code>wss://</code>(加密)作为协议前缀，该协议不实行同源政策，只要服务器支持就能跨源通信</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /char HTTP/1.1</span><br><span class="line">Host: server.example.com</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Origin: http://example.com</span><br></pre></td></tr></table></figure>
+<p>因为请求头中有origin信息，服务器可以根据这个字段来决定是否允许本次通信</p>
+<p>CORS(cross-origin resource sharing)是跨源资源分享的缩写</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2019/05/27/jsonp知识/" data-title="jsonp知识 | Mouse Blog" data-tsina class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/05/19/DOM事件模型/" title="DOM事件模型">
+ <strong>NEXT:</strong><br> 
+ <span>DOM事件模型
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	
+	<div class="ds-thread" data-title="jsonp知识" data-thread-key="jsonp知识" data-author-key="Xuan Lee" data-url="http://yoursite.com/post/jsonp知识"></div>
+	
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JSONP知识"><span class="toc-number">1.</span> <span class="toc-text">JSONP知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前置知识"><span class="toc-number">1.1.</span> <span class="toc-text">前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#规避上面限制的方法"><span class="toc-number">1.1.1.</span> <span class="toc-text">规避上面限制的方法</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+<div id="authorInfo">
+	
+		<div class="author-logo"></div>		
+	
+	<div class="social-list">
+		
+		
+		
+		
+		
+	</div>
+</div>
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+      <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
+      <li><a href="http://gengbiao.me" target="_blank" title="coney">coney's Blog</a></li>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer">
+    
+            <p class="copyright"> © 2019 
+		
+		<a href="http://yoursite.com" target="_blank" title="Xuan Lee">Xuan Lee</a>
+		
+            && Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> && Theme by <a href="http://gengbiao.me" target="_blank" title="coney">coney</a>
+            </p></div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:""};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+<script>
+    
+        var _bdImg = '4';
+    
+    window._bd_share_config={
+        "common":{
+            "bdSnsKey":{
+
+            },
+            "bdText":"",
+            "bdMini":"2",
+            "bdMiniList":[
+                "qzone",
+                "tsina",
+                "weixin",
+                "renren",
+                "tqq",
+                "tieba",
+                "douban",
+                "sqq",
+                "diandian",
+                "huaban",
+                "youdao",
+                "mail",
+                "ty",
+                "fbook",
+                "twi",
+                "linkedin",
+                "copy",
+                "print"
+            ],
+            "bdPic":"",
+            "bdStyle":"0",
+            "bdSize":"16"
+        },
+        "slide":{
+            "type":"slide",
+            "bdImg":_bdImg,
+            "bdPos":"right",
+            "bdTop":"350"
+        },
+        "image":{
+            "viewList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ],
+            "viewText":"分享：",
+            "viewSize":"16"
+        },
+        "selectShare":{
+            "bdContainerClass":null,
+            "bdSelectMiniList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ]
+        }
+    };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', '', '');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
+
